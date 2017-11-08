@@ -4,10 +4,12 @@
     <div class="row">
         <div class="col-md-10">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Home</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    <h3>Hello!! {{Auth::user()->name}}</h3>
+                    <h3>Wellcome back!!</h3>
+                    
                 </div>
             </div>
         </div>

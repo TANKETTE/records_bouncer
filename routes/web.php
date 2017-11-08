@@ -26,3 +26,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('users_mass_destroy', ['uses' => 'Admin\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
 
 });
+
+Route::resource('customers', 'CustomersController');
+Route::get('customers.create', 'CustomersController@search')->name('customers.search');
+Route::get('customers.results', 'CustomersController@results')->name('customers.results');
+
+Route::resource('sclrecords', 'SclRecordsController');
+Route::get('/sclrecords/create/{id}', 'SclRecordsController@create');

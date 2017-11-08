@@ -8,7 +8,7 @@
             <li class="{{ $request->segment(1) == 'home' ? 'active' : '' }}">
                 <a href="{{ url('/') }}">
                     <i class="fa fa-wrench"></i>
-                    <span class="title">@lang('global.app_dashboard')</span>
+                    <span class="title">Home</span>
                 </a>
             </li>
             
@@ -50,6 +50,47 @@
                 </ul>
             </li>
             @endcan
+
+            @can('customers_manage')
+                <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i>
+                    <span class="title">Customers</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li class="{{ $request->segment(2) == 'find_customers' ? 'active active-sub' : '' }}">
+                        <a href="{{ route('customers.search') }}">
+                            <i class="fa fa-search"></i>
+                            <span class="title">
+                                Find Customers
+                            </span>
+                        </a>
+                    </li>
+                    <li class="{{ $request->segment(2) == 'new_customers' ? 'active active-sub' : '' }}">
+                        <a href="{{ route('customers.create') }}">
+                            <i class="fa fa-users"></i>
+                            <span class="title">
+                                New Customers
+                            </span>
+                        </a>
+                    </li> 
+                    <li class="{{ $request->segment(2) == 'all_customers' ? 'active active-sub' : '' }}">
+                        <a href="{{ route('customers.index') }}">
+                            <i class="fa fa-users"></i>
+                            <span class="title">
+                                All Customers
+                            </span>
+                        </a>
+                    </li>                   
+                </ul>
+            </li>
+            @endcan
+
+            
 
             <li class="{{ $request->segment(1) == 'change_password' ? 'active' : '' }}">
                 <a href="{{ route('auth.change_password') }}">
