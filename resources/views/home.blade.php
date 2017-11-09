@@ -11,7 +11,14 @@
                     <h3>Wellcome back!!</h3>
                     
                 </div>
+
+                {!! Form::open(['route' => 'auth.logout', 'style' => 'display:none;', 'id' => 'logout']) !!}
+                    <button type="submit">Logout</button>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
+
+    @include('inc.search')
+    
 @endsection

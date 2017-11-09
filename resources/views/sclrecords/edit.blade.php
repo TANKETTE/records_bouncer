@@ -1,12 +1,11 @@
 @extends('layouts.app')
 @section('content')
 <h3 class="page-title">Edit Scl Record</h3>
+<hr>
     {!! Form::model($sclrecord, ['method' => 'PUT', 'route' => ['sclrecords.update', $sclrecord->id]]) !!}
 
     <div class="panel panel-default">
-        <div class="panel-heading">
-            Edit Scl Record
-        </div>
+        
         
         <div class="panel-body">
             <div class="row">
@@ -21,7 +20,7 @@
         </div>
     </div>
 
-    
+    {!! Form::submit('Update', ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
 
     

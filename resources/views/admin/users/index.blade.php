@@ -3,40 +3,32 @@
 
 @section('content')
     <h3 class="page-title">@lang('global.users.title')</h3>
+    <hr>
     <p>
-        <a href="{{ route('admin.users.create') }}" class="btn btn-success">@lang('global.app_add_new')</a>
+        <a href="{{ route('admin.users.create') }}" class="btn btn-success">Create New User</a>
     </p>
-
+<hr>
     <div class="panel panel-default">
-        <div class="panel-heading">
-            @lang('global.app_list')
-        </div>
+        
 
         <div class="panel-body table-responsive">
-            <table class="table table-bordered table-striped {{ count($users) > 0 ? 'datatable' : '' }} dt-select">
+            <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
-
                         <th>@lang('global.users.fields.name')</th>
                         <th>@lang('global.users.fields.email')</th>
                         <th>@lang('global.users.fields.roles')</th>
-                        <th>&nbsp;</th>
-
                     </tr>
-                </thead>
-                
+                </thead>            
                 <tbody>
                     @if (count($users) > 0)
                         @foreach ($users as $user)
-                            <tr data-entry-id="{{ $user->id }}">
-                                <td></td>
-
+                            <tr data-entry-id="{{ $user->id }}">                              
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
                                     @foreach ($user->roles->pluck('name') as $role)
-                                        <span class="label label-info label-many">{{ $role }}</span>
+                                        <span class="label label-warning label-many">{{ $role }}</span>
                                     @endforeach
                                 </td>
                                 <td>
@@ -63,8 +55,4 @@
     </div>
 @stop
 
-@section('javascript') 
-    <script>
-        window.route_mass_crud_entries_destroy = '{{ route('admin.users.mass_destroy') }}';
-    </script>
-@endsection
+

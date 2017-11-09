@@ -1,13 +1,15 @@
 @extends('layouts.app')
 @section('content')
-    <h3 class="page-title">{{$customer->name}}</h3>
-    
+    <h3>{{$customer->name}}</h3>
+    <hr>
+    <button class="btn btn-primary" route="#">Back</button>
+    <h3>Edit Customer Informations</h3>
+    <hr>   
     {!! Form::model($customer, ['method' => 'PUT', 'route' => ['customers.update', $customer->id]]) !!}
-
+    {!! Form::submit('Update', ['class' => 'btn btn-danger']) !!}
+    <hr>
     <div class="panel panel-default">
-        <div class="panel-heading">
-            Edit Customer
-        </div>
+        
 
         <div class="panel-body">
             <div class="row">
@@ -40,7 +42,7 @@
         </div>
     </div>
 
-    {!! Form::submit('Update', ['class' => 'btn btn-danger']) !!}
+    
     {!! Form::close() !!}
     
 @stop

@@ -1,14 +1,11 @@
 @extends('layouts.app')
 @section('content')
 <h3 class="page-title">Create New Customer</h3>
+<hr>
     {!! Form::open(['method' => 'POST', 'route' => ['customers.store']]) !!}
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            New Customer
-        </div>
-        
-        <div class="panel-body">
+<div class="panel panel-default">
+    <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('name', 'Name (required)', ['class' => 'control-label']) !!}

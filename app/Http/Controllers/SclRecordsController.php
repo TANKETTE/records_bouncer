@@ -20,8 +20,8 @@ class SclRecordsController extends Controller
      */
     public function index()
     {
-        $sclrecords = SclRecord::all();
-        return view('sclrecords.index', compact('sclrecords'));
+        
+        return view('home');
     }
 
     /**
@@ -44,9 +44,10 @@ class SclRecordsController extends Controller
      */
     public function store(Request $request)
     {
-
-        SclRecord::create($request->all());
-        return redirect()->route('sclrecords.index');
+        $data = $request->all();
+        SclRecord::create($data);
+        $customer_id = $request->input('customer_id');
+        return redirect()->route('customers.show', $customer_id);
     }
 
     /**
@@ -82,7 +83,10 @@ class SclRecordsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $sclrecord = SclRecord::findOrFail($id);
+        $sclrecord->update($request->all());
+
+        return redirect()->route('sclrecords.show', $sclrecord->id);
     }
 
     /**

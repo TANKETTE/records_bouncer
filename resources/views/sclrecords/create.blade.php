@@ -1,13 +1,12 @@
 @extends('layouts.app')
 @section('content')
 <h3 class="page-title">Create New Scl Record</h3>
+<hr>
     {!! Form::open(['method' => 'POST', 'route' => ['sclrecords.store']]) !!}
-
+    {!! Form::submit('Save', ['class' => 'btn btn-danger']) !!}
+    <hr>
     <div class="panel panel-default">
-        <div class="panel-heading">
-            New Scl Record
-        </div>
-        
+
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">
@@ -20,7 +19,7 @@
         </div>
     </div>
 
-    {!! Form::submit('Save', ['class' => 'btn btn-danger']) !!}
+    
     {!! Form::close() !!}
 
     

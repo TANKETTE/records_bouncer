@@ -6,6 +6,7 @@ use App\customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class CustomersController extends Controller
 {
@@ -23,22 +24,23 @@ class CustomersController extends Controller
     public function index()
     {
         if (! Gate::allows('customers_manage')) {
-            return abort(401);
+            return back();
         }
-
-        $customers = Customer::all();
-
-        return view('customers.index', compact('customers'));
+        return view('customers.search');
     }
 
     public function search()
-    {
+    {  
         return view('customers.search');
     }
 
     public function results()
     {
-        return view('customers.results');
+        $keyword = Input::get('search');
+        $customers = Customer::where('phone1', 'like', '%'.$keyword.'%')
+        ->orwhere('phone2', 'like', '%'.$keyword.'%')
+        ->orwhere('phone3', 'like', '%'.$keyword.'%')->get();
+        return view('customers.results', compact('customers'));
     }
 
     /**
@@ -49,7 +51,7 @@ class CustomersController extends Controller
     public function create()
     {  
         if (! Gate::allows('customers_manage')) {
-        return abort(401);
+        return back();
         }
 
         return view('customers.create');
@@ -64,7 +66,7 @@ class CustomersController extends Controller
     public function store(Request $request)
     {
         if (! Gate::allows('customers_manage')) {
-            return abort(401);
+            return back();
         }
 
         $this->validate($request, [
@@ -73,7 +75,7 @@ class CustomersController extends Controller
             ]);
          //create customer
 
-         $customer = new Customer;
+        /* $customer = new Customer;
          $customer->ic = $request->input('ic');
          $customer->name = $request->input('name');
          $customer->phone1 = $request->input('phone1');
@@ -81,11 +83,12 @@ class CustomersController extends Controller
          $customer->phone3 = $request->input('phone3');
          $customer->save();
 
-         return redirect()->route('customers.show', $customer->id);
+         return redirect()->route('customers.show', $customer->id);*/
    
-        //$customer=  new Customer;
-        //Customer::create($request->all());
-        //return redirect()->route('customers.show', $customer->id);
+        $data = $request->all();
+        Customer::create($data);
+        $customer = Customer::latest()->first();
+        return redirect()->route('customers.show', $customer->id);
     }
 
     /**
@@ -109,7 +112,7 @@ class CustomersController extends Controller
     public function edit($id)
     {
         if (! Gate::allows('customers_manage')) {
-            return abort(401);
+            return back();
         }
         $customer = Customer::findOrFail($id);
 
@@ -126,7 +129,7 @@ class CustomersController extends Controller
     public function update(Request $request, $id)
     {
         if (! Gate::allows('customers_manage')) {
-            return abort(401);
+            return back();
         }
         $customer = Customer::findOrFail($id);
         $customer->update($request->all());

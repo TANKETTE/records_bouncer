@@ -1,49 +1,37 @@
 @extends('layouts.app')
 @section('content')
-
-
 <h3 class="page-title">{{$customer->name}}</h3>
-    
-    {!! Form::model($customer, ['method' => 'GET', 'route' => ['customers.show', $customer->id]]) !!}
+<div class="well">
+    <ul class="nav nav-pills nav-justified">
+        <li class="active"><a data-toggle="pill" href="#home">Informations</a></li>
+        <li><a data-toggle="pill" href="#SCL">SCL</a></li>
+        <li><a data-toggle="pill" href="#PCC">PCC</a></li>
+        <li><a data-toggle="pill" href="#HCV">HCV</a></li>
+    </ul>
+    <hr>
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-           Customer Informations
-        </div>
-
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('name', 'Name (required)', ['class' => 'control-label']) !!}
-                    {!! Form::text('name', old('title'), ['class' => 'form-control', 'placeholder' => '','disabled']) !!}   
+            <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                <h3>Customer Informations</h3>
+                <hr>
+                    @include('inc.info')
                 </div>
-
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('ic', 'IC Number', ['class' => 'control-label']) !!}
-                    {!! Form::text('ic', old('title'), ['class' => 'form-control', 'placeholder' => '', 'disabled']) !!}   
+                
+                <div id="SCL" class="tab-pane fade">
+                    <h3>SCL Records</h3>
+                    <hr>
+                    @include('inc.sclrecords')
                 </div>
-
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('phone1', 'Phone Number 1 (required)', ['class' => 'control-label']) !!}
-                    {!! Form::text('phone1', old('title'), ['class' => 'form-control', 'placeholder' => '','disabled']) !!}   
+                <div id="PCC" class="tab-pane fade">
+                    <h3>PCC Records</h3>
+                    <hr>
+                    @include('inc.pcc')
                 </div>
-
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('phone2', 'Phone Number 2', ['class' => 'control-label']) !!}
-                    {!! Form::text('phone2', old('title'), ['class' => 'form-control', 'placeholder' => '','disabled']) !!}   
+                <div id="HCV" class="tab-pane fade">
+                    <h3>HCV Records</h3>
+                    <hr>
+                    @include('inc.hcv')
                 </div>
-
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('phone3', 'Phone Number 3', ['class' => 'control-label']) !!}
-                    {!! Form::text('phone3', old('title'), ['class' => 'form-control', 'placeholder' => '','disabled']) !!}   
-                </div>
-            </div>
-            
-        </div>
-    </div>  
-
-    <a href="/customers/{{$customer->id}}/edit" class="btn btn-success">Edit Customer</a> 
-    <a href="{{ route('sclrecords.index') }}" class="btn btn-success">All Scl Records</a> 
-    <a href="/sclrecords/create/{{$customer->id}}" class="btn btn-success">Create New Scl Record</a> 
-    
+            </div>   
+</div>   
 @stop

@@ -3,31 +3,25 @@
 
 @section('content')
     <h3 class="page-title">@lang('global.abilities.title')</h3>
+    <hr>
     <p>
-        <a href="{{ route('admin.abilities.create') }}" class="btn btn-success">@lang('global.app_add_new')</a>
+        <a href="{{ route('admin.abilities.create') }}" class="btn btn-success">Create New Ability</a>
     </p>
+    <hr>
 
     <div class="panel panel-default">
-        <div class="panel-heading">
-            @lang('global.app_list')
-        </div>
-
         <div class="panel-body table-responsive">
-            <table class="table table-bordered table-striped {{ count($abilities) > 0 ? 'datatable' : '' }} dt-select">
+            <table class="table table-bordered table-striped">
                 <thead>
-                    <tr>
-                        <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
-                        <th>@lang('global.abilities.fields.name')</th>
-                        <th>&nbsp;</th>
-
+                    <tr>                       
+                        <th><h3>Abilitiy Name</h3></th>
+                        
                     </tr>
-                </thead>
-                
+                </thead>            
                 <tbody>
                     @if (count($abilities) > 0)
                         @foreach ($abilities as $ability)
-                            <tr data-entry-id="{{ $ability->id }}">
-                                <td></td>
+                            <tr data-entry-id="{{ $ability->id }}">                           
                                 <td>{{ $ability->name }}</td>
                                 <td>
                                     <a href="{{ route('admin.abilities.edit',[$ability->id]) }}" class="btn btn-xs btn-info">@lang('global.app_edit')</a>
@@ -53,8 +47,3 @@
     </div>
 @stop
 
-@section('javascript') 
-    <script>
-        window.route_mass_crud_entries_destroy = '{{ route('admin.abilities.mass_destroy') }}';
-    </script>
-@endsection

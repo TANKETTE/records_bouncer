@@ -3,23 +3,23 @@
 
 @section('content')
     <h3 class="page-title">@lang('global.roles.title')</h3>
+    <hr>
     <p>
-        <a href="{{ route('admin.roles.create') }}" class="btn btn-success">@lang('global.app_add_new')</a>
+        <a href="{{ route('admin.roles.create') }}" class="btn btn-success">Create New Role</a>
     </p>
+    <hr>
 
     <div class="panel panel-default">
-        <div class="panel-heading">
-            @lang('global.app_list')
-        </div>
+        
 
         <div class="panel-body table-responsive">
             <table class="table table-bordered table-striped {{ count($roles) > 0 ? 'datatable' : '' }} dt-select">
                 <thead>
                     <tr>
-                        <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
+                        
                         <th>@lang('global.roles.fields.name')</th>
                         <th>@lang('global.roles.fields.abilities')</th>
-                        <th>&nbsp;</th>
+                        
                     </tr>
                 </thead>
                 
@@ -27,11 +27,11 @@
                     @if (count($roles) > 0)
                         @foreach ($roles as $role)
                             <tr data-entry-id="{{ $role->id }}">
-                                <td></td>
+                                
                                 <td>{{ $role->name }}</td>
                                 <td>
                                     @foreach ($role->abilities()->pluck('name') as $ability)
-                                        <span class="label label-info label-many">{{ $ability }}</span>
+                                        <span class="label label-warning label-many">{{ $ability }}</span>
                                     @endforeach
                                 </td>
                                 <td>
@@ -57,8 +57,3 @@
     </div>
 @stop
 
-@section('javascript') 
-    <script>
-        window.route_mass_crud_entries_destroy = '{{ route('admin.roles.mass_destroy') }}';
-    </script>
-@endsection

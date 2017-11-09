@@ -28,8 +28,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 });
 
 Route::resource('customers', 'CustomersController');
-Route::get('customers.create', 'CustomersController@search')->name('customers.search');
-Route::get('customers.results', 'CustomersController@results')->name('customers.results');
+Route::get('customers.search', 'CustomersController@search')->name('customers.search');
+Route::post('customers.results', 'CustomersController@results')->name('customers.results');
 
 Route::resource('sclrecords', 'SclRecordsController');
 Route::get('/sclrecords/create/{id}', 'SclRecordsController@create');
+
+
+
