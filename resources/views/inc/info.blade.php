@@ -1,4 +1,6 @@
+@can('customers_manage')
 <a href="/customers/{{$customer->id}}/edit" class="btn btn-success">Edit Customer</a> 
+@endcan
 <hr>
 {!! Form::model($customer, ['method' => 'GET', 'route' => ['customers.show', $customer->id]]) !!}
 

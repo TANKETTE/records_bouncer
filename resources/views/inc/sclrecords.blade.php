@@ -1,5 +1,6 @@
-
+@can('records_manage')
 <a href="/sclrecords/create/{{$customer->id}}" class="btn btn-success">Create New Scl Record</a> 
+@endcan
 <hr>
 <div class="panel panel-default">
     <div class="panel-body">

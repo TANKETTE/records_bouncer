@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\SclRecord;
 use App\Customer;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class SclRecordsController extends Controller
 {
@@ -20,7 +23,9 @@ class SclRecordsController extends Controller
      */
     public function index()
     {
-        
+        if (! Gate::allows('records_manage')) {
+            return back();}
+
         return view('home');
     }
 
@@ -31,7 +36,9 @@ class SclRecordsController extends Controller
      */
     public function create($customer_id)
     {   
-        
+        if (! Gate::allows('records_manage')) {
+            return back();}
+
         return view('sclrecords.create')->with('customer_id', $customer_id);
        
     }
@@ -44,6 +51,9 @@ class SclRecordsController extends Controller
      */
     public function store(Request $request)
     {
+        if (! Gate::allows('records_manage')) {
+            return back();}
+            
         $data = $request->all();
         SclRecord::create($data);
         $customer_id = $request->input('customer_id');
@@ -58,6 +68,9 @@ class SclRecordsController extends Controller
      */
     public function show($id)
     {
+        if (! Gate::allows('view_records_manage')) {
+            return back();}
+
         $sclrecord = Sclrecord::find($id);
         return view('sclrecords.show', compact('sclrecord'));
     }
@@ -70,6 +83,9 @@ class SclRecordsController extends Controller
      */
     public function edit($id)
     {
+        if (! Gate::allows('records_manage')) {
+            return back();}
+
         $sclrecord = SclRecord::findOrFail($id);
         return view('sclrecords.edit', compact('sclrecord'));
     }
@@ -83,6 +99,9 @@ class SclRecordsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (! Gate::allows('records_manage')) {
+            return back();}
+
         $sclrecord = SclRecord::findOrFail($id);
         $sclrecord->update($request->all());
 

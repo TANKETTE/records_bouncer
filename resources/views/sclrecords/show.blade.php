@@ -5,7 +5,9 @@
      <hr>
     <h3>Scl Record </h3>
     <hr>
-    <a href="/sclrecords/{{$sclrecord->id}}/edit" class="btn btn-success">Update Scl Record</a> 
+    @can('records_manage')
+        <a href="/sclrecords/{{$sclrecord->id}}/edit" class="btn btn-success">Update Scl Record</a> 
+    @endcan
      <hr>
     <div class="panel panel-default">
         

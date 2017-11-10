@@ -18,5 +18,12 @@ class UserSeed extends Seeder
             'password' => bcrypt('password')
         ]);
         $user->assign('administrator');
+
+        /*$tanki = User::create([
+            'name' => 'tanki',
+            'email' => 'tanki@admin.com',
+            'password' => bcrypt('password')
+        ]);
+        $tanki->assign('admin');*/
     }
 }

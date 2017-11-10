@@ -14,8 +14,8 @@
             
             @can('users_manage')
             <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-users"></i>
+                <a href="">
+                    <i class="fa fa-user"></i>
                     <span class="title">@lang('global.user-management.title')</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
@@ -24,7 +24,7 @@
                 <ul class="treeview-menu">
                     <li class="{{ $request->segment(2) == 'abilities' ? 'active active-sub' : '' }}">
                         <a href="{{ route('admin.abilities.index') }}">
-                            <i class="fa fa-briefcase"></i>
+                            <i class="fa fa-envelope"></i>
                             <span class="title">
                                 @lang('global.abilities.title')
                             </span>
@@ -52,7 +52,7 @@
 
             @can('customers_manage')
             <li class="treeview">
-                <a href="#">
+                <a href="">
                     <i class="fa fa-users"></i>
                     <span class="title">Customers</span>
                     <span class="pull-right-container">
@@ -70,7 +70,7 @@
                     </li>
                     <li class="{{ $request->segment(2) == 'create' ? 'active active-sub' : '' }}">
                         <a href="{{ route('customers.create') }}">
-                            <i class="fa fa-users"></i>
+                            <i class="fa fa-user"></i>
                             <span class="title">
                                 New Customers
                             </span>

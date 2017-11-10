@@ -31,11 +31,17 @@ class CustomersController extends Controller
 
     public function search()
     {  
+        if (! Gate::allows('view_records_manage')) {
+            return back();}
+            
         return view('customers.search');
     }
 
     public function results()
     {
+        if (! Gate::allows('view_records_manage')) {
+            return back();}
+
         $keyword = Input::get('search');
         $customers = Customer::where('phone1', 'like', '%'.$keyword.'%')
         ->orwhere('phone2', 'like', '%'.$keyword.'%')
@@ -99,6 +105,9 @@ class CustomersController extends Controller
      */
     public function show($id)
     {
+        if (! Gate::allows('view_records_manage')) {
+            return back();}
+            
         $customer = Customer::find($id);
         return view('customers.show')->with('customer', $customer);
     }
