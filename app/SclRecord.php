@@ -8,7 +8,7 @@ use\App\Customer;
 class SclRecord extends Model
 {
 
-    protected $fillable = ['history','visit_date', 'customer_id'];
+    protected $guarded = ['id'];
 
     public function customer(){
         

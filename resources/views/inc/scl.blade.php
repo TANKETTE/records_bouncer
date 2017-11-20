@@ -1,9 +1,8 @@
 @can('records_manage')
-<a href="/sclrecords/create/{{$customer->id}}" class="btn btn-success">Create New Scl Record</a> 
+<a href="/sclrecords/create/{{$customer->id}}" class="btn btn-warning btn-lg">Create New Scl Record</a> 
 @endcan
 <hr>
 <div class="panel panel-default">
-    <div class="panel-body">
         <div class = "table-bordered ">
                 <table class="table table-bordered table-hover">
                     <thead>
@@ -28,11 +27,11 @@
                             <td></td>
                         </tr>
                     </tbody>                
-                @endforeach          
-                </table>   
+                @endforeach            
                 @else
-                 <p>No Record Found</p>
+                 <p>No Record Found</p>              
             @endif
+                </table> 
         </div>
-    </div>
 </div> 
+

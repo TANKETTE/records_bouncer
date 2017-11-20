@@ -1,4 +1,4 @@
 @can('records_manage')
-<a href="#" class="btn btn-success">New HCV Record</a> 
+<a href="#" class="btn btn-warning btn-lg">New HCV Record</a> 
 @endcan
 <hr>

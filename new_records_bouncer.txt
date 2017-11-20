@@ -1,0 +1,16 @@
+abilities
+-users-manage
+-customers_manage
+-records_manage
+-view_records_manage
+
+roles
+admin: all abilities
+
+optometrist
+-customers_manage
+-records_manage
+-view_records_manage
+
+sales
+-view_records_manage

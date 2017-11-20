@@ -14,9 +14,7 @@
                     {!! Form::textarea('history', old('title'), ['class' => 'form-control', 'placeholder' => 'History']) !!} 
 
                     {!! Form::label('visit_date', 'Visit Date', ['class' => 'control-label']) !!}
-                    {!! Form::date('visit_date', old('title'), ['class' => 'form-control', 'placeholder' => 'Visit Date']) !!}    
-
-                    
+                    {!! Form::date('visit_date', old('title'), ['class' => 'form-control', 'placeholder' => 'Visit Date']) !!}                      
         </div>
     </div>
 

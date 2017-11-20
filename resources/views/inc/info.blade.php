@@ -1,12 +1,10 @@
 @can('customers_manage')
-<a href="/customers/{{$customer->id}}/edit" class="btn btn-success">Edit Customer</a> 
+<a href="/customers/{{$customer->id}}/edit" class="btn btn-info btn-lg">Edit Customer</a> 
 @endcan
 <hr>
 {!! Form::model($customer, ['method' => 'GET', 'route' => ['customers.show', $customer->id]]) !!}
 
     <div class="panel panel-default">
-        
-
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">

@@ -19,11 +19,18 @@ class UserSeed extends Seeder
         ]);
         $user->assign('administrator');
 
-        /*$tanki = User::create([
-            'name' => 'tanki',
-            'email' => 'tanki@admin.com',
+        $opt = User::create([
+            'name' => 'optometrist',
+            'email' => 'optometrist@admin.com',
             'password' => bcrypt('password')
         ]);
-        $tanki->assign('admin');*/
+        $opt->assign('optometrist');
+
+        $sales = User::create([
+            'name' => 'sales',
+            'email' => 'sales@admin.com',
+            'password' => bcrypt('password')
+        ]);
+        $sales->assign('sales');
     }
 }

@@ -34,13 +34,13 @@ class SclRecordsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($customer_id)
+    public function create($id)
     {   
         if (! Gate::allows('records_manage')) {
             return back();}
-
-        return view('sclrecords.create')->with('customer_id', $customer_id);
-       
+        
+        $customer = Customer::find($id);   
+        return view('sclrecords.create')->with('customer', $customer);   
     }
 
     /**
@@ -55,8 +55,10 @@ class SclRecordsController extends Controller
             return back();}
             
         $data = $request->all();
+        //dd($data);
         SclRecord::create($data);
         $customer_id = $request->input('customer_id');
+        
         return redirect()->route('customers.show', $customer_id);
     }
 
@@ -72,7 +74,9 @@ class SclRecordsController extends Controller
             return back();}
 
         $sclrecord = Sclrecord::find($id);
+        
         return view('sclrecords.show', compact('sclrecord'));
+        
     }
 
     /**

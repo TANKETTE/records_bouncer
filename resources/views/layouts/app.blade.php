@@ -40,11 +40,9 @@
                             </ul>
                         </div>
                     @endif
-
-                    @yield('content')
-
                 </div>
             </div>
+            @yield('content')
         </section>
     </div>
 </div>

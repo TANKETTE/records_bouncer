@@ -6,10 +6,13 @@
 
 <div class="row">
         <div class="col-md-1 form-group">
+            <a href="javascript:history.back()" class="btn btn-primary btn-lg">Back</a>
+        </div>
+        <div class="col-md-1 form-group">
             {!! Form::submit('Save', ['class' => 'btn btn-success btn-lg']) !!}
         </div>
         <div class="col-md-1 form-group">
-            {!! Form::submit('Cancel', ['class' => 'btn btn-danger btn-lg']) !!}
+            {!! Form::reset('Cancel', ['class' => 'btn btn-danger btn-lg']) !!}
         </div>
     </div>
 

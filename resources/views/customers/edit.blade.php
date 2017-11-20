@@ -2,11 +2,11 @@
 @section('content')
     <h3>{{$customer->name}}</h3>
     <hr>
-    <button class="btn btn-primary" route="#">Back</button>
+    <button class="btn btn-primary btn-lg" route="#">Back</button>
     <h3>Edit Customer Informations</h3>
     <hr>   
     {!! Form::model($customer, ['method' => 'PUT', 'route' => ['customers.update', $customer->id]]) !!}
-    {!! Form::submit('Update', ['class' => 'btn btn-danger']) !!}
+    {!! Form::submit('Update', ['class' => 'btn btn-success btn-lg']) !!}
     <hr>
     <div class="panel panel-default">
         

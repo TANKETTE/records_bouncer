@@ -36,3 +36,4 @@ Route::get('/sclrecords/create/{id}', 'SclRecordsController@create');
 
 
 
+
